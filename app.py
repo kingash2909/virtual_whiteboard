@@ -32,7 +32,7 @@ def generate_token():
     # create a Sync grant and add to token
     sync_grant = SyncGrant(sync_service_sid)
     token.add_grant(sync_grant)
-    return jsonify(identity=username, token=token.to_jwt())
+    return jsonify(identity=username, token=token.to_jwt().decode())
 
 if __name__ == "__main__":
     app.run(host='localhost', port='5001', debug=True)
